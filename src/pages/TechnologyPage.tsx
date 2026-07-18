@@ -4,19 +4,20 @@ import TodoPlaceholder from "../components/TodoPlaceholder";
 
 export default function TechnologyPage() {
   return (
-    <div className="bg-[#f7f7f7] min-h-screen flex flex-col">
-      <Nav current="technology" />
-
-      <div className="max-w-[1440px] w-full mx-auto px-20">
-        <div className="pt-24 lg:pt-[272px] pb-16 lg:pb-[128px] text-center px-6">
+    <div className="bg-white min-h-screen flex flex-col">
+      <div className="bg-[#f7f7f7]">
+        <Nav current="technology" />
+        <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20 pt-8 lg:pt-[193px] pb-16 lg:pb-24 text-center">
           <h1 className="font-charon text-[36px] lg:text-[72px] leading-[1.1] lg:leading-[80px] uppercase bg-gradient-to-r from-[#195b36] to-[#152d70] bg-clip-text text-transparent">
             Technology:
             <br />
             LLM Repellents
           </h1>
         </div>
+      </div>
 
-        <section className="max-w-[700px] mx-auto flex flex-col gap-6 pb-24 px-6 lg:px-0">
+      <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
+        <section className="max-w-[700px] mx-auto flex flex-col gap-6 pb-24 pt-16">
           <h2 className="font-space font-bold text-[24px] text-black">
             What are LLM Repellents?
           </h2>

@@ -72,3 +72,51 @@ overflow and sane stacking).
 - `npm run build` succeeds, emits `dist/index.html`, `dist/technology.html`,
   `dist/research.html` plus hashed assets.
 - `vite preview` serves the built output correctly at `base: '/thebrentgroup/'`.
+
+## Round 2 fixes (post user review)
+
+The first pass matched at thumbnail resolution but missed several things a
+closer look (and re-querying `get_design_context` on the actual root frames
+`8:61`, `8:145`, `8:174`, plus the person-card component variants `8:187`)
+caught:
+
+1. **Hero background was applied to the whole page**, not just the hero
+   band. Figma's `8:66`/`8:145`/`8:174` frames show `bg-[#f7f7f7]` scoped to
+   a fixed-height band (680px on About, 432px on Technology/Research) with
+   the rest of the page on `bg-white`. Fixed by wrapping only Nav + hero
+   heading (+ mission, About only) in their own `bg-[#f7f7f7]` container.
+2. **Nav-to-heading gap was double-counted.** The heading wrapper had its
+   own `pt-[206px]` stacked *after* Nav's own `pt-[53px]` + rendered height,
+   pushing the heading ~200px too far down. Figma's absolute coordinates
+   (nav bottom at y=79, heading top at y=206 on About; y=272 vs nav bottom
+   79 on Technology/Research) give the actual needed gap: 127px (About),
+   193px (Technology/Research). Fixed by using those gap values directly as
+   the heading wrapper's `padding-top` instead of the absolute Figma
+   y-coordinate.
+3. **Pull-quote alignment was wrong.** Design node `8:87` is `text-right`,
+   24px, `font-medium` — not `text-center` at 20px as originally built.
+   Combining `text-center` with `ml-auto` (right-shifted box, centered text
+   inside it) produced the "right yet centered" look the user flagged.
+   Fixed to `text-right` at the correct size/weight.
+4. **Person card hover was missing.** `Frame 2`'s two variants (`2:17`
+   Default, `8:188` Variant2) are a hover state: Variant2 swaps the 1px
+   black border for a 12px `#195b36` (the gradient's green) border, same
+   layout otherwise. Added `hover:border-[12px] hover:border-[#195b36]`
+   with a transition.
+5. **Publications list and footer contact were not uppercase.** The
+   Publications wrapper (`8:75`) and footer contact wrapper (`8:98`) both
+   carry Figma's `uppercase` text-case at the container level, cascading to
+   every child including the URL text — confirmed against a zoomed Figma
+   reference render of the footer, not just the low-res full-page
+   thumbnail. Removed the `normal-case` overrides that had been added to
+   the footer and added `uppercase` to the Publications section.
+6. **Footer gradient was compressed.** The footer was sized by content
+   (`py-24` padding) rather than Figma's fixed 392px band height, so the
+   gradient rendered over a much shorter span than intended, at the wrong
+   position. Fixed to `lg:h-[392px]` with `pt-[172px]` on the inner text
+   block, matching Figma's absolute values exactly. Verified via Playwright
+   bounding box: footer height is now exactly 392px.
+
+Re-verified after fixes: `npm run build`/`npm run lint` clean, no 768px
+overflow, hover state screenshot confirmed matching the Variant2 component,
+footer bounding box `{height: 392}` exact.
