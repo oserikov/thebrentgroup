@@ -25,7 +25,7 @@ export default function AboutPage() {
       </div>
 
       <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
-        <p className="font-space font-medium text-[20px] lg:text-[24px] text-black text-right max-w-[690px] lg:ml-auto mt-16 lg:mt-[110px] leading-[1.7]">
+        <p className="font-space font-medium text-[20px] lg:text-[24px] text-black text-right max-w-[690px] lg:ml-auto mt-16 lg:mt-[110px] leading-[normal]">
           {PULL_QUOTE}
         </p>
 

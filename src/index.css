@@ -13,3 +13,13 @@ body {
 #root {
   min-height: 100vh;
 }
+
+.person-card-ring {
+  padding: 12px;
+  background: linear-gradient(to right, #195b36, #152d70);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}

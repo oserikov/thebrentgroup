@@ -11,6 +11,7 @@ export default function Footer() {
     >
       <div className="pt-16 lg:pt-[172px] pb-16 text-center font-charon uppercase text-[20px] text-black leading-[24px]">
         <p className="font-space font-bold">Contact</p>
+        <p className="font-space font-normal">&#8203;</p>
         <p className="font-space font-normal">oleg Serikov</p>
         <a
           href={`mailto:${CONTACT_EMAIL}`}

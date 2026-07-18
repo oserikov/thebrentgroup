@@ -7,7 +7,7 @@ export default function ResearchPage() {
     <div className="bg-white min-h-screen flex flex-col">
       <div className="bg-[#f7f7f7]">
         <Nav current="research" />
-        <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20 pt-8 lg:pt-[193px] pb-16 lg:pb-24 text-center">
+        <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20 pt-8 lg:pt-[193px] pb-8 lg:pb-0 text-center">
           <h1 className="font-charon text-[28px] lg:text-[72px] leading-[1.1] lg:leading-[80px] uppercase bg-gradient-to-r from-[#195b36] to-[#152d70] bg-clip-text text-transparent lg:whitespace-nowrap">
             Research:
             <br />
@@ -21,7 +21,7 @@ export default function ResearchPage() {
           <h2 className="font-space font-bold text-[24px] text-black">
             Volkov, Serikov, and coworkers — expertise and relevant prior work
           </h2>
-          <p className="font-space text-[16px] leading-[24px] text-black">
+          <p className="font-space font-light text-[16px] leading-[24px] text-black">
             Palisade-era AI-safety work that underwrites the monitoring
             component of the present proposal. Volkov, Serikov, and
             colleagues continue to carry out relevant work on AI-enabled
