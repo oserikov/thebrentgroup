@@ -1,32 +1,26 @@
-# React + TypeScript + Vite
+# The Brent Group — website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Vite + React + TypeScript + Tailwind, built to visual parity with the Figma
+redesign (see `spec.md` and `PARITY.md`). Three static pages, no router:
 
-Currently, two official plugins are available:
+- `index.html` — About
+- `technology.html` — Technology: LLM Repellents
+- `research.html` — Research: Expertise and relevant prior work
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Develop
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build
+
+```
+npm run build   # outputs to dist/
+npm run preview # serve the built output locally
+```
+
+Deploys to GitHub Pages via `.github/workflows/deploy.yml` on push to `main`
+(project page at `oserikov.github.io/thebrentgroup`, `base: '/thebrentgroup/'`
+in `vite.config.ts`).
