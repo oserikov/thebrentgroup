@@ -19,7 +19,11 @@ export default function AboutPage() {
           </div>
 
           <p className="font-space font-light text-[20px] text-black text-center max-w-[619px] mx-auto pb-16 lg:pb-24">
-            {MISSION}
+            {MISSION}. Our two fundamental pillars are{" "}
+            <a href="/thebrentgroup/technology.html" className="underline">
+              LLM Repellents
+            </a>
+            , and Messages to the Future.
           </p>
         </div>
       </div>
