@@ -23,10 +23,22 @@ See the README's "Editing content" section for the naming convention.
   the frames listed below. Any deviation must be justified against a recorded
   implementation nuance in `spec.md`.
 - Implementation planning may NOT proceed unless every manifest frame is reachable
-  via the Figma MCP (`get_screenshot`).
+  via the figma-console MCP (`mcp__figma-console__figma_take_screenshot`).
 - Pinned stack: Vite + React + Tailwind + TypeScript (multi-page build, no router).
 - Design tokens come from Figma variables/exported styles → Tailwind theme.
   Do not hardcode values that exist as variables (see spec.md Tokens section).
+- **Read Figma exclusively through figma-console.** Never substitute the official
+  Figma remote MCP (`mcp.figma.com`) or any other Figma-adjacent MCP server, even if
+  it happens to be connected and figma-console is not — its codegen/convenience
+  tools can silently flatten precision-sensitive properties (a gradient stroke
+  collapsed to one solid color, an exact numeric font-weight dropped to a guessed
+  default) with no error and no visible sign in the returned code. This exact failure
+  mode shipped multiple visual bugs in this project before being caught by manual
+  review — see `PARITY.md`. When a visual property matters and a screenshot
+  comparison can't settle it with confidence, pull
+  `mcp__figma-console__figma_get_component_for_development` on that node and read the
+  actual `fills`/`strokes`/`style` — don't guess, and don't infer from a sibling
+  element's styling.
 
 ### Figma frame manifest
 
