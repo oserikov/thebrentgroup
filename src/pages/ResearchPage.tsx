@@ -1,17 +1,20 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import TodoPlaceholder from "../components/TodoPlaceholder";
+import { RESEARCH } from "../content.generated";
 
 export default function ResearchPage() {
+  const [line1, line2] = RESEARCH.heroTitle;
+
   return (
     <div className="bg-white min-h-screen flex flex-col">
       <div className="bg-[#f7f7f7]">
         <Nav current="research" />
         <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20 pt-8 lg:pt-[193px] pb-8 lg:pb-0 text-center">
           <h1 className="font-charon text-[28px] lg:text-[72px] leading-[1.1] lg:leading-[80px] uppercase bg-gradient-to-r from-[#195b36] to-[#152d70] bg-clip-text text-transparent lg:whitespace-nowrap">
-            Research:
+            {line1}
             <br />
-            Expertise and relevant prior work
+            {line2}
           </h1>
         </div>
       </div>
@@ -19,44 +22,15 @@ export default function ResearchPage() {
       <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
         <section className="max-w-[700px] mx-auto flex flex-col gap-6 pb-24 pt-16">
           <h2 className="font-space font-bold text-[24px] text-black">
-            Volkov, Serikov, and coworkers — expertise and relevant prior work
+            {RESEARCH.subheading}
           </h2>
-          <p className="font-space font-light text-[16px] leading-[24px] text-black">
-            Palisade-era AI-safety work that underwrites the monitoring
-            component of the present proposal. Volkov, Serikov, and
-            colleagues continue to carry out relevant work on AI-enabled
-            harm. In an earlier demonstration, Volkov and team showed that
-            current AI systems can autonomously execute harmful end-to-end
-            offensive actions (Bondarenko et al. 2025). In 2024–2025, Volkov
-            and colleagues (
-            <a
-              href="https://palisaderesearch.org/blog/biollama"
-              target="_blank"
-              rel="noreferrer"
-              className="underline"
-            >
-              Volkov et al. (2025)
-            </a>{" "}
-            and Dev, 2025) contributed to a study that made safety-degraded
-            open-weight LLMs and fine-tuned those into being biology lab
-            assistants. Brent and coworkers contributed training materials
-            for that project, and became acquainted with Volkov during the
-            course of that work. In continuing work, Reworr and Volkov
-            (2024a and 2024b) have deployed honeypot infrastructure that has
-            to date captured and analyzed over 1.7 million interactions with
-            weakly defended Linux systems in 10 countries. The system
-            distinguishes AI-agent traffic from conventional bot traffic.
-            This is a working surveillance system for which we maintain
-            codebase and operational experience.
-          </p>
+          <div
+            className="md-content font-space font-light text-[16px] leading-[24px] text-black"
+            dangerouslySetInnerHTML={{ __html: RESEARCH.bodyHtml }}
+          />
 
           <div className="mt-12">
-            <TodoPlaceholder
-              lines={[
-                "content from relevant prior work goes here?",
-                "Brent's archives?",
-              ]}
-            />
+            <TodoPlaceholder html={RESEARCH.todoHtml} />
           </div>
         </section>
       </div>

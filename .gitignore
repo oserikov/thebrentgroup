@@ -25,3 +25,6 @@ dist-ssr
 
 # Parity-check screenshots (Figma refs + Playwright renders) — regenerable, not source
 .parity/
+
+# Generated from /content/*.md by scripts/build-content.mjs — not source
+src/content.generated.ts

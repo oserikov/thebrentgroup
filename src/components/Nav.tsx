@@ -1,3 +1,5 @@
+import { SITE } from "../content.generated";
+
 export type Page = "about" | "technology" | "research";
 
 const LINKS: { page: Page; label: string; href: string }[] = [
@@ -10,10 +12,10 @@ export default function Nav({ current }: { current: Page }) {
   return (
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center lg:items-center justify-between w-full max-w-[1440px] mx-auto px-6 lg:px-20 pt-8 lg:pt-[53px] text-[16px] lg:text-[20px] font-space uppercase text-black">
       {current === "about" ? (
-        <p>the brent group</p>
+        <p>{SITE.name}</p>
       ) : (
         <a href="/thebrentgroup/" className="cursor-pointer">
-          the brent group
+          {SITE.name}
         </a>
       )}
       <div className="flex gap-6 lg:gap-16 items-center">

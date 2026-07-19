@@ -8,6 +8,14 @@ Ships first at `oserikov.github.io/thebrentgroup`; migrates to
 `thebrentgroup.github.io` later, replacing the sibling Jekyll repo at
 `~/thebrentgroup-site` once approved. See `spec.md` for full scope.
 
+## Content
+
+All page copy lives in `/content/*.md` (frontmatter + markdown body), not in
+the TSX. `scripts/build-content.mjs` generates `src/content.generated.ts`
+(gitignored) from it — runs automatically via `npm run dev`/`npm run build`.
+Never hardcode prose/copy in a component; add or edit a `.md` file instead.
+See the README's "Editing content" section for the naming convention.
+
 <!-- BEGIN pipeline:design-binding-rules -->
 ## Design binding rules (Figma-driven)
 

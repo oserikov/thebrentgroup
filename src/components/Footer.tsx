@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL } from "../content";
+import { SITE } from "../content.generated";
 
 export default function Footer() {
   return (
@@ -12,14 +12,14 @@ export default function Footer() {
       <div className="pt-16 lg:pt-[172px] pb-16 text-center font-charon uppercase text-[20px] text-black leading-[24px]">
         <p className="font-space font-bold">Contact</p>
         <p className="font-space font-normal">&#8203;</p>
-        <p className="font-space font-normal">oleg Serikov</p>
+        <p className="font-space font-normal">{SITE.contact_name}</p>
         <a
-          href={`mailto:${CONTACT_EMAIL}`}
+          href={`mailto:${SITE.contact_email}`}
           target="_blank"
           rel="noreferrer"
           className="font-space font-normal underline"
         >
-          {CONTACT_EMAIL}
+          {SITE.contact_email}
         </a>
       </div>
     </footer>
