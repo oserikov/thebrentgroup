@@ -167,6 +167,16 @@ function makeSplittable(
     overlay.style.display = "block";
 
     function onMove(ev: MouseEvent) {
+      // If the mouse button was released outside the document (e.g. the
+      // cursor left the browser window before mouseup), no "mouseup" event
+      // ever reaches us and the drag would otherwise get stuck — leaving
+      // this full-viewport overlay up and blocking every click/hover on the
+      // page (including the nav dropdown) until reload. Treat "no buttons
+      // pressed" on the next move as an implicit release.
+      if (ev.buttons === 0) {
+        onUp();
+        return;
+      }
       const rect = block!.getBoundingClientRect();
       const total = rect.height - handleH;
       const pdfH = Math.max(MIN_CELL, Math.min(total - MIN_CELL, ev.clientY - rect.top));
@@ -177,9 +187,11 @@ function makeSplittable(
       overlay.style.display = "none";
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseup", onUp);
+      window.removeEventListener("blur", onUp);
     }
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseup", onUp);
+    window.addEventListener("blur", onUp);
   }
 
   handle.addEventListener("mousedown", onDown);

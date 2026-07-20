@@ -1,7 +1,7 @@
 ---
 hero_title:
-  - "Unconventional AI ×"
-  - "Bio Countermeasures"
+  - "Unconventional"
+  - "AI × Bio Countermeasures"
 pull_quote: >
     Led by Dr. Roger Brent, 
     

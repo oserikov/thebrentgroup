@@ -21,6 +21,15 @@ export default function Footer() {
         >
           {SITE.contact_email}
         </a>
+        <p className="font-space font-normal">&#8203;</p>
+        <a
+          href="https://thebrentgroup.github.io"
+          target="_blank"
+          rel="noreferrer"
+          className="font-space font-normal underline"
+        >
+          our old website
+        </a>
       </div>
     </footer>
   );
