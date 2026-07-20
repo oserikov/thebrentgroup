@@ -1,6 +1,6 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import TodoPlaceholder from "../components/TodoPlaceholder";
+import RepellentsDemo from "../components/RepellentsDemo";
 import { TECHNOLOGY } from "../content.generated";
 
 export default function TechnologyPage() {
@@ -20,7 +20,7 @@ export default function TechnologyPage() {
       </div>
 
       <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
-        <section className="max-w-[700px] mx-auto flex flex-col gap-6 pb-24 pt-16">
+        <section className="max-w-[700px] mx-auto flex flex-col gap-6 pt-16">
           <h2 className="font-space font-medium text-[24px] text-black">
             {TECHNOLOGY.subheading}
           </h2>
@@ -28,10 +28,10 @@ export default function TechnologyPage() {
             className="md-content font-space font-light text-[16px] leading-[20px] text-black"
             dangerouslySetInnerHTML={{ __html: TECHNOLOGY.bodyHtml }}
           />
+        </section>
 
-          <div className="mt-12">
-            <TodoPlaceholder html={TECHNOLOGY.todoHtml} />
-          </div>
+        <section className="max-w-[1280px] mx-auto pb-24 pt-16">
+          <RepellentsDemo />
         </section>
       </div>
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import PersonCard from "../components/PersonCard";
@@ -5,6 +6,7 @@ import { ABOUT, PEOPLE } from "../content.generated";
 
 export default function AboutPage() {
   const [line1, line2] = ABOUT.heroTitle;
+  const [activeTab, setActiveTab] = useState<"publications" | "document-hub">("publications");
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
@@ -29,7 +31,14 @@ export default function AboutPage() {
 
       <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
         <p className="font-space font-medium text-[20px] lg:text-[24px] text-black text-right max-w-[690px] lg:ml-auto mt-16 lg:mt-[110px] leading-[normal]">
-          {ABOUT.pullQuote}
+          {ABOUT.pullQuote.trim()
+            .split("\n")
+            .map((line, i, lines) => (
+              <span key={i}>
+                {line}
+                {i < lines.length - 1 && <br />}
+              </span>
+            ))}
         </p>
 
         <section className="mt-16 lg:mt-[80px] flex flex-col gap-16">
@@ -45,13 +54,27 @@ export default function AboutPage() {
 
         <section className="mt-16 lg:mt-[124px] flex flex-col gap-16 pb-24 uppercase">
           <div className="flex flex-wrap gap-7 items-baseline text-[28px] lg:text-[36px] font-charon">
-            <p className="text-black">{ABOUT.publicationsHeading}</p>
+            <button
+              type="button"
+              onClick={() => setActiveTab("publications")}
+              className={`cursor-pointer uppercase ${activeTab === "publications" ? "text-black" : "text-[#aeb6b0]"}`}
+            >
+              {ABOUT.publicationsHeading}
+            </button>
             <p className="text-black">/</p>
-            <p className="text-[#aeb6b0]">{ABOUT.documentHubLabel}</p>
+            <button
+              type="button"
+              onClick={() => setActiveTab("document-hub")}
+              className={`cursor-pointer uppercase ${activeTab === "document-hub" ? "text-black" : "text-[#aeb6b0]"}`}
+            >
+              {ABOUT.documentHubLabel}
+            </button>
           </div>
           <div
             className="md-content font-space font-light text-[16px] leading-[24px] text-black max-w-[800px]"
-            dangerouslySetInnerHTML={{ __html: ABOUT.publicationsHtml }}
+            dangerouslySetInnerHTML={{
+              __html: activeTab === "publications" ? ABOUT.publicationsHtml : ABOUT.documentHubHtml,
+            }}
           />
         </section>
       </div>

@@ -32,8 +32,280 @@ body {
   padding-left: 1.5rem;
   margin: 0;
 }
+.md-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0;
+}
 .md-content li {
   margin: 0;
+}
+.md-content h2 {
+  font-family: var(--font-space);
+  font-weight: 500;
+  font-size: 20px;
+  color: #000;
+  margin: 2rem 0 0;
+}
+.md-content h2:first-child {
+  margin-top: 0;
+}
+.md-content h2 + p {
+  margin-top: 1rem;
+}
+
+/* Ported near-verbatim from the old Jekyll site's LLM-repellents demo
+   widget (repellents-effect-example/index.html) — see spec.md "Page: Demo". */
+.demo-wrap {
+  width: 100%;
+  margin: 1em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  font-family: system-ui, sans-serif;
+  background: #0a0a1a;
+  color: #e0e0e0;
+}
+.demo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  background: #16213e;
+  border-bottom: 1px solid #2a2a4a;
+}
+.demo-bar.repelled {
+  background: #1e1600;
+  border-bottom-color: #3a2e00;
+}
+.demo-bar-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #aaa;
+}
+.demo-toggle {
+  background: none;
+  border: 1px solid #444;
+  color: #bbb;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+.demo-toggle:hover {
+  background: #2a2a4a;
+  color: #fff;
+}
+.demo-block {
+  height: 70vh;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+.pdf-cell {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 80px;
+}
+.cell-label {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.cell-label.original {
+  background: rgba(46, 134, 222, 0.95);
+  color: white;
+}
+.cell-label.repelled {
+  background: rgba(202, 138, 4, 0.95);
+  color: white;
+}
+.paper-tabs {
+  display: flex;
+  background: #111827;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid #333;
+}
+.paper-tabs::-webkit-scrollbar {
+  height: 3px;
+}
+.paper-tabs::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 2px;
+}
+.paper-tab {
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-right: 1px solid #222;
+  max-width: 40px;
+  min-width: 30px;
+  transition:
+    max-width 0.2s,
+    background 0.15s;
+  color: #888;
+  background: #0d1320;
+  flex-shrink: 0;
+}
+.paper-tab:hover {
+  background: #1a2744;
+  color: #ccc;
+}
+.paper-tab.active {
+  background: #0f3460;
+  color: white;
+  font-weight: 600;
+  max-width: 300px;
+  border-bottom: 2px solid #2e86de;
+}
+#block-repelled .paper-tabs {
+  background: #1a1200;
+}
+#block-repelled .paper-tab {
+  background: #140e00;
+  color: #888;
+  border-right-color: #2a1f00;
+}
+#block-repelled .paper-tab:hover {
+  background: #2a1f00;
+  color: #ccc;
+}
+#block-repelled .paper-tab.active {
+  background: #3a2800;
+  border-bottom-color: #ca8a04;
+}
+.pdf-frame {
+  flex: 1;
+  border: none;
+}
+.split-handle {
+  flex-shrink: 0;
+  height: 8px;
+  background: #1a1a2e;
+  cursor: row-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+.split-handle::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: #444;
+}
+.split-handle:hover {
+  background: #2a2a4a;
+}
+.split-handle:hover::after {
+  background: #888;
+}
+.term-cell {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #0a0a1a;
+  min-height: 80px;
+  overflow: hidden;
+}
+.term-header {
+  flex-shrink: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.term-header.original {
+  background: rgba(46, 134, 222, 0.95);
+  color: white;
+}
+.term-header.repelled {
+  background: rgba(202, 138, 4, 0.95);
+  color: white;
+}
+.term-body {
+  width: 90%;
+  aspect-ratio: 16 / 9;
+  margin: 16px auto;
+  background: #1e1e1e;
+  font-family:
+    "Cascadia Code",
+    "Fira Code",
+    "SF Mono",
+    "Menlo",
+    "Consolas",
+    monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 12px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #cccccc;
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+.term-body::-webkit-scrollbar {
+  width: 6px;
+}
+.term-body::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+.t-user {
+  color: #4ec9b0;
+}
+.t-active {
+  display: block;
+  border-top: 1px solid #3a3a3a;
+  border-bottom: 1px solid #3a3a3a;
+  margin: 2px -16px;
+  padding: 2px 16px;
+}
+.t-bullet {
+  color: #e0e0e0;
+}
+.t-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #cccccc;
+  vertical-align: text-bottom;
+  animation: demo-blink 1s step-end infinite;
+}
+@keyframes demo-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.drag-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  cursor: row-resize;
 }
 
 .person-card-ring {

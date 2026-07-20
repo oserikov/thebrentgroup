@@ -3,10 +3,16 @@
 ## Project
 
 Vite + React + TS + Tailwind rebuild of the Brent Group site as a pixel-accurate
-implementation of the Figma redesign (3 pages: About, Technology, Research).
-Ships first at `oserikov.github.io/thebrentgroup`; migrates to
-`thebrentgroup.github.io` later, replacing the sibling Jekyll repo at
-`~/thebrentgroup-site` once approved. See `spec.md` for full scope.
+implementation of the Figma redesign (3 Figma-backed pages: About, Technology,
+Credibility [formerly "Research", then "Team" — renamed post-grant, see
+spec.md v3/v6]), plus one v5 page with no Figma frame: Messages to the Future
+(linked from About's pillars sentence and from a hover dropdown on the
+TECHNOLOGY nav item — v6 — but not itself in the top nav). The Technology
+page also embeds a v3 component with no Figma frame: the LLM Repellents demo
+(`<RepellentsDemo>`, not its own route). Ships first at
+`oserikov.github.io/thebrentgroup`; migrates to `thebrentgroup.github.io` later,
+replacing the sibling Jekyll repo at `~/thebrentgroup-site` once approved.
+See `spec.md` for full scope.
 
 ## Content
 
@@ -48,11 +54,14 @@ File key: `7f8Tpajeo1QRPjoaewEMqH`
 |---|---|---|
 | Desktop - 3 | About page (`/`) | `8:61` |
 | Desktop - 4 | Technology page (`/technology.html`) | `8:138` |
-| Desktop - 5 | Research page (`/research.html`) | `8:173` |
+| Desktop - 5 | Credibility page (`/credibility.html`, formerly Research, then Team) | `8:173` |
 | Frame 14 (nav, repeats per page) | Shared `<Nav>` component | `8:137` / `8:147` / `8:176` |
 | Frame 12 (footer, repeats per page) | Shared `<Footer>` / contact component | `8:96` / `8:161` / `8:182` |
 | Frame 10 (People section) | `<PeopleSection>` on About page | `8:88` |
 | Frame 6 → Frame 3/4/5 (person card) | `<PersonCard>` component | `8:62` → `8:63`, `8:64`, `8:65` |
 | Frame 9 (Publications) | `<Publications>` on About page | `8:75` |
 | Frame 2 (off-canvas component defs) | `<PersonCard>` variants (Default/Variant2) | `8:187` → `2:17`, `8:188` |
+| *(none)* | Credibility page's Roger-credibility section (v3) — no frame, reuses `8:173`'s established heading/body pattern | — |
+| *(none)* | `<RepellentsDemo>`, embedded on the Technology page (v3) — no frame, ported near-verbatim from the old Jekyll site's self-contained HTML/CSS/JS widget | — |
+| *(none)* | Messages to the Future page (v5, `/messages-to-the-future.html`) — no frame, reuses established heading/body pattern; not in top nav | — |
 <!-- END pipeline:design-binding-rules -->

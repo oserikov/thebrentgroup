@@ -11,7 +11,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         technology: resolve(__dirname, "technology.html"),
-        research: resolve(__dirname, "research.html"),
+        credibility: resolve(__dirname, "credibility.html"),
+        messagesToFuture: resolve(__dirname, "messages-to-the-future.html"),
       },
     },
   },
