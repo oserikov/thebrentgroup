@@ -91,7 +91,8 @@ re-laid-out per the new design.
 - Hero: "Technology: LLM Repellents".
 - "What are LLM Repellents?" heading + body paragraph (verbatim from Figma,
   new copy not present on the old site — this is new content for this page).
-- Below that: a **visible TODO placeholder** reading "content from LLM Repellents goes here?" (per user: keep visible, don't omit, don't invent content —
+- Below that: a **visible TODO placeholder** reading "content from LLM
+  Repellents goes here?" (per user: keep visible, don't omit, don't invent content —
   it's the client's own reminder that more content is coming). Render it
   distinctly (e.g. dashed border, muted color) so it reads as an in-progress
   marker, not a design element.
@@ -103,7 +104,8 @@ re-laid-out per the new design.
 - "Volkov, Serikov, and coworkers — expertise and relevant prior work" heading
   + body paragraph (verbatim from Figma; includes one inline link,
   "Volkov et al. (2025)").
-- Visible TODO placeholder: "content from relevant prior work goes here? Brent's archives?" — same treatment as the Technology page placeholder.
+- Visible TODO placeholder: "content from relevant prior work goes here?
+  Brent's archives?" — same treatment as the Technology page placeholder.
 - Contact footer.
 
 ## Responsive
