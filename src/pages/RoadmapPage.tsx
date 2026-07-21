@@ -9,7 +9,7 @@ export default function RoadmapPage() {
   return (
     <div className="bg-white min-h-screen flex flex-col">
       <div className="bg-[#f7f7f7]">
-        <Nav />
+        <Nav current="roadmap" />
         <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20 pt-8 lg:pt-[193px] pb-8 lg:pb-0 text-center">
           <h1 className="font-charon text-[36px] lg:text-[72px] leading-[1.1] lg:leading-[80px] uppercase bg-gradient-to-r from-[#195b36] to-[#152d70] bg-clip-text text-transparent">
             {line1}

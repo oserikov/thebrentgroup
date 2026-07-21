@@ -1,6 +1,6 @@
 import { SITE } from "../content.generated";
 
-export type Page = "about" | "technology" | "messages-to-future" | "credibility";
+export type Page = "about" | "technology" | "messages-to-future" | "credibility" | "roadmap";
 
 const TECHNOLOGY_LINKS: { page: Page; label: string; href: string }[] = [
   { page: "technology", label: "LLM Repellents", href: "/thebrentgroup/technology.html" },
@@ -9,6 +9,7 @@ const TECHNOLOGY_LINKS: { page: Page; label: string; href: string }[] = [
     label: "Messages to the Future",
     href: "/thebrentgroup/messages-to-the-future.html",
   },
+  { page: "roadmap", label: "Roadmap", href: "/thebrentgroup/roadmap.html" },
 ];
 
 function TechnologyLink({ link, current }: { link: (typeof TECHNOLOGY_LINKS)[number]; current?: Page }) {
@@ -22,7 +23,7 @@ function TechnologyLink({ link, current }: { link: (typeof TECHNOLOGY_LINKS)[num
 }
 
 export default function Nav({ current }: { current?: Page }) {
-  const technologyActive = current === "technology" || current === "messages-to-future";
+  const technologyActive = current === "technology" || current === "messages-to-future" || current === "roadmap";
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-0 items-center lg:items-center justify-between w-full max-w-[1440px] mx-auto px-6 lg:px-20 pt-8 lg:pt-[53px] text-[16px] lg:text-[20px] font-space uppercase text-black">

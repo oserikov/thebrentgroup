@@ -25,6 +25,8 @@ interface Lane {
   label: string;
   labelX: number;
   labelY: number;
+  bandY: number; // lane band ("glass" highlight) bounding box, full canvas width
+  bandHeight: number;
   rows: Row[];
 }
 
@@ -43,6 +45,8 @@ const LANES: Lane[] = [
     label: "Technical countermeasures",
     labelX: VIEW_W,
     labelY: 152,
+    bandY: 50,
+    bandHeight: 125,
     rows: [
       {
         circleY: 135,
@@ -60,6 +64,8 @@ const LANES: Lane[] = [
     label: "Messages to the Future",
     labelX: VIEW_W,
     labelY: 450,
+    bandY: 188,
+    bandHeight: 275,
     rows: [
       {
         circleY: 273,
@@ -86,6 +92,8 @@ const LANES: Lane[] = [
     label: "Liaison & ecosystem",
     labelX: VIEW_W,
     labelY: 578,
+    bandY: 475,
+    bandHeight: 125,
     rows: [
       {
         circleY: 560,
@@ -185,13 +193,23 @@ export default function RoadmapDiagram() {
         aria-label="Brent Group SFF roadmap: Technical countermeasures, Messages to the Future, and Liaison & ecosystem workstreams plotted against a Jun 2026 – May 2027 seasonal timeline"
       >
         <defs>
+          {/* Solid on the left, fading to white on the right — matches the
+              source .drawio's gradientDirection="east" (fillColor at the
+              west edge, gradientColor/white at the east edge). */}
           <linearGradient id="in-progress-fill" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#ccdccd" />
+            <stop offset="0%" stopColor="#ccdccd" />
+            <stop offset="100%" stopColor="#ffffff" />
           </linearGradient>
           <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#000000" />
           </marker>
+          {/* "Glass" lane highlight — approximates the source .drawio's
+              glass=1 style: a soft white sheen across the top of each band,
+              fading to nothing by mid-height. */}
+          <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity={0.5} />
+            <stop offset="55%" stopColor="#ffffff" stopOpacity={0} />
+          </linearGradient>
           {SEASONS.map((s) => (
             <linearGradient key={s.id} id={`season-${s.id}`} x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#ffffff" />
@@ -224,10 +242,15 @@ export default function RoadmapDiagram() {
         <text x={1005} y={22} fontSize={14} className="font-space fill-black">
           in progress
         </text>
-        <circle cx={1137.5} cy={17.5} r={12.5} fill="#ccdccd" />
+        <circle cx={1137.5} cy={17.5} r={12.5} fill="#ccdccd" stroke="#000000" strokeWidth={1} />
         <text x={1155} y={22} fontSize={14} className="font-space fill-black">
           done
         </text>
+
+        {/* Lane bands ("glass" highlight) */}
+        {LANES.map((lane) => (
+          <rect key={`band-${lane.label}`} x={0} y={lane.bandY} width={VIEW_W} height={lane.bandHeight} rx={12} fill="url(#glass)" />
+        ))}
 
         {/* Lanes */}
         {LANES.map((lane) => (
