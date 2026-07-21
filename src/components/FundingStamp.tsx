@@ -50,11 +50,11 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
 
   useLayoutEffect(() => {
     const stamp = stampRef.current;
-    const above = aboveRef.current;
-    const below = belowRef.current;
-    if (!stamp || !above || !below) return;
+    if (!stamp) return;
 
     function fit() {
+      const above = aboveRef.current;
+      const below = belowRef.current;
       if (!stamp || !above || !below) return;
       let s = 1;
       const apply = (v: number) => {
@@ -72,7 +72,21 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
       setScale(s);
     }
 
-    fit();
+    const ro = new ResizeObserver(fit);
+    // belowRef is a sibling that mounts *after* this component in the same
+    // commit (the pull-quote paragraph, further down the JSX tree) — React
+    // attaches refs in tree order as it walks the commit, so belowRef.current
+    // is still null on this synchronous pass. A microtask runs after the
+    // whole commit finishes, by which point every ref in the tree is
+    // attached, so fit() and the observer setup are deferred there instead
+    // of running (and silently no-op'ing on a null belowRef) here.
+    queueMicrotask(() => {
+      fit();
+      const above = aboveRef.current;
+      const below = belowRef.current;
+      if (above) ro.observe(above);
+      if (below) ro.observe(below);
+    });
     // Belt-and-suspenders re-checks: mobile text can reflow (web font swap,
     // Android's own text-size-adjust) in ways that don't cleanly surface as
     // a single ResizeObserver tick, so re-run fit shortly after mount too.
@@ -83,9 +97,6 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
     // swapping in (fallback font -> Space Grotesk), which changes how tall
     // the mission/pull-quote blocks are without any resize event firing.
     // ResizeObserver watches the actual elements instead.
-    const ro = new ResizeObserver(fit);
-    ro.observe(above);
-    ro.observe(below);
     window.addEventListener("resize", fit);
     return () => {
       clearTimeout(t1);
