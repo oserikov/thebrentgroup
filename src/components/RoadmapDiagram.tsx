@@ -52,10 +52,10 @@ const LANES: Lane[] = [
         circleY: 135,
         captionTop: 60,
         milestones: [
-          { id: "repellents", x: 0, lines: ["Repellents"], state: "done" },
-          { id: "honeypot", x: 200, lines: ["Honeypots", "(Reworr & Volkov, 2025)"], state: "done" },
-          { id: "lpr", x: 400, lines: ["License Plate", "Reader (LPR)"], state: "not-started" },
-          { id: "tbt", x: 600, lines: ["Token-Burning Trap", "(needs partner)"], state: "not-started" },
+          { id: "honeypot", x: 0, lines: ["Honeypots", "(Reworr & Volkov, 2025)"], state: "done" },
+          { id: "repellents", x: 200, lines: ["Repellents"], state: "done" },
+          { id: "lpr", x: 400, lines: ["License plate", "reader (LPR)"], state: "not-started" },
+          { id: "tbt", x: 600, lines: ["Token-burning trap", "(needs partner)"], state: "not-started" },
         ],
       },
     ],
@@ -72,7 +72,7 @@ const LANES: Lane[] = [
         captionTop: 198,
         milestones: [
           { id: "demo", x: 0, lines: ["Demo", "(live example)"], state: "done" },
-          { id: "preprint-deploy", x: 400, lines: ["Preprint Servers", "Deployment (arXiv / bioRxiv)"], state: "in-progress" },
+          { id: "preprint-deploy", x: 400, lines: ["Preprint servers", "deployment (arXiv / bioRxiv)"], state: "in-progress" },
           { id: "notice-design", x: 800, lines: ["Notice design", "iteration"], state: "not-started" },
         ],
       },
@@ -111,8 +111,8 @@ const LANES: Lane[] = [
 // Sequential chains, one per row, plus the one cross-row dependency
 // (Notice design iteration feeds Repeat probes).
 const EDGES: [string, string][] = [
-  ["repellents", "honeypot"],
-  ["honeypot", "lpr"],
+  ["honeypot", "repellents"],
+  ["repellents", "lpr"],
   ["lpr", "tbt"],
   ["demo", "preprint-deploy"],
   ["preprint-deploy", "notice-design"],
@@ -152,6 +152,22 @@ const SEASONS: Season[] = [
 
 const SEASON_LABEL_Y = 651.5;
 const TIMELINE_Y = 619;
+const TIMELINE_ARROW_LEN = 20;
+const TIMELINE_SHAFT_HALF = 1.5;
+const TIMELINE_HEAD_HALF = 6;
+
+// Right-aligned to the canvas edge, vertically centered with the title —
+// computed from box widths instead of hand-placed x's, so the block stays
+// self-consistent if a label ever changes.
+const HEADER_CENTER_Y = 25;
+const LEGEND_R = 12.5;
+const LEGEND_CIRCLE_TEXT_GAP = 8;
+const LEGEND_ITEM_GAP = 20;
+const LEGEND: { state: MilestoneState; label: string; boxWidth: number }[] = [
+  { state: "not-started", label: "Not started", boxWidth: 95 },
+  { state: "in-progress", label: "In progress", boxWidth: 95 },
+  { state: "done", label: "Done", boxWidth: 55 },
+];
 
 function Caption({ x, top, lines }: { x: number; top: number; lines: string[] }) {
   return (
@@ -183,6 +199,28 @@ export default function RoadmapDiagram() {
     }
   }
 
+  const legendItemWidth = (item: (typeof LEGEND)[number]) => 2 * LEGEND_R + LEGEND_CIRCLE_TEXT_GAP + item.boxWidth;
+  const legendTotalWidth =
+    LEGEND.reduce((sum, item) => sum + legendItemWidth(item), 0) + LEGEND_ITEM_GAP * (LEGEND.length - 1);
+  let legendCursor = VIEW_W - legendTotalWidth;
+  const legendLayout = LEGEND.map((item) => {
+    const cx = legendCursor + LEGEND_R;
+    const textX = legendCursor + 2 * LEGEND_R + LEGEND_CIRCLE_TEXT_GAP;
+    legendCursor += legendItemWidth(item) + LEGEND_ITEM_GAP;
+    return { ...item, cx, textX };
+  });
+
+  const timelinePath = [
+    `M 0 ${TIMELINE_Y - TIMELINE_SHAFT_HALF}`,
+    `L ${VIEW_W - TIMELINE_ARROW_LEN} ${TIMELINE_Y - TIMELINE_SHAFT_HALF}`,
+    `L ${VIEW_W - TIMELINE_ARROW_LEN} ${TIMELINE_Y - TIMELINE_HEAD_HALF}`,
+    `L ${VIEW_W} ${TIMELINE_Y}`,
+    `L ${VIEW_W - TIMELINE_ARROW_LEN} ${TIMELINE_Y + TIMELINE_HEAD_HALF}`,
+    `L ${VIEW_W - TIMELINE_ARROW_LEN} ${TIMELINE_Y + TIMELINE_SHAFT_HALF}`,
+    `L 0 ${TIMELINE_Y + TIMELINE_SHAFT_HALF}`,
+    "Z",
+  ].join(" ");
+
   return (
     <div className="w-full overflow-x-auto">
       <svg
@@ -204,11 +242,13 @@ export default function RoadmapDiagram() {
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#000000" />
           </marker>
           {/* "Glass" lane highlight — approximates the source .drawio's
-              glass=1 style: a soft white sheen across the top of each band,
-              fading to nothing by mid-height. */}
+              glass=1 style: a bright sheen at the top, fading through the
+              middle, but with a little visibility still left at the bottom
+              rather than fading all the way to nothing. */}
           <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" stopOpacity={0.5} />
-            <stop offset="55%" stopColor="#ffffff" stopOpacity={0} />
+            <stop offset="55%" stopColor="#ffffff" stopOpacity={0.05} />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity={0.18} />
           </linearGradient>
           {SEASONS.map((s) => (
             <linearGradient key={s.id} id={`season-${s.id}`} x1="0" y1="0" x2="1" y2="0">
@@ -226,26 +266,28 @@ export default function RoadmapDiagram() {
         ))}
 
         {/* Title */}
-        <text x={0} y={22} fontSize={20} className="font-charon font-bold fill-black">
-          Brent Group SFF Roadmap
-        </text>
-        <text x={0} y={42} fontSize={20} className="font-charon font-bold fill-black">
-          Technical AI Countermeasures &amp; AI Influencers · Jun 2026 - May 2027
+        <text x={0} y={HEADER_CENTER_Y + 7} fontSize={20} className="font-charon font-bold fill-black">
+          Our Roadmap
         </text>
 
-        {/* Legend */}
-        <circle cx={837.5} cy={17.5} r={12.5} fill="#ffffff" stroke="#000000" strokeWidth={1} />
-        <text x={855} y={22} fontSize={14} className="font-space fill-black">
-          not started
-        </text>
-        <circle cx={987.5} cy={17.5} r={12.5} fill="url(#in-progress-fill)" stroke="#000000" strokeWidth={1} />
-        <text x={1005} y={22} fontSize={14} className="font-space fill-black">
-          in progress
-        </text>
-        <circle cx={1137.5} cy={17.5} r={12.5} fill="#ccdccd" stroke="#000000" strokeWidth={1} />
-        <text x={1155} y={22} fontSize={14} className="font-space fill-black">
-          done
-        </text>
+        {/* Legend — right-aligned to the canvas edge, vertically centered
+            with the title, laid out from the LEGEND array above rather than
+            hand-placed coordinates. */}
+        {legendLayout.map((item) => (
+          <g key={item.state}>
+            <circle
+              cx={item.cx}
+              cy={HEADER_CENTER_Y}
+              r={LEGEND_R}
+              fill={FILL[item.state]}
+              stroke="#000000"
+              strokeWidth={1}
+            />
+            <text x={item.textX} y={HEADER_CENTER_Y + 5} fontSize={14} className="font-space fill-black">
+              {item.label}
+            </text>
+          </g>
+        ))}
 
         {/* Lane bands ("glass" highlight) */}
         {LANES.map((lane) => (
@@ -283,8 +325,11 @@ export default function RoadmapDiagram() {
           <Edge key={`${from}-${to}`} from={centers.get(from)!} to={centers.get(to)!} />
         ))}
 
-        {/* Timeline */}
-        <line x1={0} y1={TIMELINE_Y} x2={VIEW_W} y2={TIMELINE_Y} stroke="#000000" strokeWidth={1} markerEnd="url(#arrowhead)" />
+        {/* Timeline — a thin outlined shaft widening into a triangular head,
+            matching the source .drawio's flexArrow shape (its ribbon-like
+            body reads as two parallel lines converging to a point, not a
+            single hairline). */}
+        <path d={timelinePath} fill="#000000" />
         {SEASONS.map((s) => (
           <text
             key={s.name}
