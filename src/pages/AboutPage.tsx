@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import PersonCard from "../components/PersonCard";
+import FundingStamp from "../components/FundingStamp";
 import { ABOUT, PEOPLE } from "../content.generated";
 
 export default function AboutPage() {
   const [line1, line2] = ABOUT.heroTitle;
   const [activeTab, setActiveTab] = useState<"publications" | "document-hub">("publications");
+  const missionRef = useRef<HTMLDivElement>(null);
+  const pullQuoteRef = useRef<HTMLParagraphElement>(null);
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
-      <div className="bg-[#f7f7f7]">
+      <div className="bg-[#f7f7f7] relative">
         <Nav current="about" />
 
         <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
@@ -23,14 +26,25 @@ export default function AboutPage() {
           </div>
 
           <div
+            ref={missionRef}
             className="md-content font-space font-light text-[20px] text-black text-center max-w-[619px] mx-auto pb-16 lg:pb-24"
             dangerouslySetInnerHTML={{ __html: ABOUT.missionHtml }}
           />
         </div>
+
+        {/* Overlaid on the seam between the mission text above and the pull-
+            quote below, not reserving flow space of its own — position:
+            absolute anchored to this section's own bottom edge. Given both
+            neighboring refs so it can measure real overlap and shrink itself
+            rather than guessing a size that happens to fit. */}
+        <FundingStamp aboveRef={missionRef} belowRef={pullQuoteRef} />
       </div>
 
       <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-20">
-        <p className="font-space font-medium text-[20px] lg:text-[24px] text-black text-right max-w-[690px] lg:ml-auto mt-16 lg:mt-[110px] leading-[normal]">
+        <p
+          ref={pullQuoteRef}
+          className="font-space font-medium text-[20px] lg:text-[24px] text-black text-right max-w-[690px] lg:ml-auto mt-16 lg:mt-[110px] leading-[normal]"
+        >
           {ABOUT.pullQuote.trim()
             .split("\n")
             .map((line, i, lines) => (
