@@ -73,8 +73,19 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
     }
 
     fit();
+    // Window resize alone misses phones: the viewport doesn't change size,
+    // but the surrounding text can still reflow after a web font finishes
+    // swapping in (fallback font -> Space Grotesk), which changes how tall
+    // the mission/pull-quote blocks are without any resize event firing.
+    // ResizeObserver watches the actual elements instead.
+    const ro = new ResizeObserver(fit);
+    ro.observe(above);
+    ro.observe(below);
     window.addEventListener("resize", fit);
-    return () => window.removeEventListener("resize", fit);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", fit);
+    };
   }, [wide, tx, ty, aboveRef, belowRef]);
 
   // No persistence by design — dismissing is per-visit, it comes back on refresh.
