@@ -199,16 +199,19 @@ export default function RoadmapDiagram() {
     }
   }
 
-  const legendItemWidth = (item: (typeof LEGEND)[number]) => 2 * LEGEND_R + LEGEND_CIRCLE_TEXT_GAP + item.boxWidth;
-  const legendTotalWidth =
-    LEGEND.reduce((sum, item) => sum + legendItemWidth(item), 0) + LEGEND_ITEM_GAP * (LEGEND.length - 1);
-  let legendCursor = VIEW_W - legendTotalWidth;
-  const legendLayout = LEGEND.map((item) => {
-    const cx = legendCursor + LEGEND_R;
-    const textX = legendCursor + 2 * LEGEND_R + LEGEND_CIRCLE_TEXT_GAP;
-    legendCursor += legendItemWidth(item) + LEGEND_ITEM_GAP;
-    return { ...item, cx, textX };
-  });
+  // Laid out right-to-left so the last item's text is anchored (textAnchor
+  //="end") at exactly VIEW_W — the same convention the lane labels use —
+  // instead of a left-to-right pass whose final edge only approximated
+  // VIEW_W by however close the guessed boxWidth was to the real glyph
+  // metrics. boxWidth still governs the (approximate, and here harmless)
+  // circle-to-text spacing for every item but the earlier ones.
+  let legendCursor = VIEW_W;
+  const legendLayout = [...LEGEND].reverse().map((item) => {
+    const textRight = legendCursor;
+    const circleCenter = textRight - item.boxWidth - LEGEND_CIRCLE_TEXT_GAP - LEGEND_R;
+    legendCursor = circleCenter - LEGEND_R - LEGEND_ITEM_GAP;
+    return { ...item, cx: circleCenter, textRight };
+  }).reverse();
 
   const timelinePath = [
     `M 0 ${TIMELINE_Y - TIMELINE_SHAFT_HALF}`,
@@ -224,9 +227,12 @@ export default function RoadmapDiagram() {
   return (
     <div className="w-full overflow-x-auto">
       <svg
-        viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+        // 2px of padding on every side: circles sitting flush against x=0
+        // (Honeypots, Demo, Outreach) have their 1px stroke half clipped by
+        // the viewBox edge otherwise, reading as a visibly cut-off ring.
+        viewBox={`-2 -2 ${VIEW_W + 4} ${VIEW_H + 4}`}
         className="w-full h-auto"
-        style={{ minWidth: 700, aspectRatio: `${VIEW_W} / ${VIEW_H}` }}
+        style={{ minWidth: 700, aspectRatio: `${VIEW_W + 4} / ${VIEW_H + 4}` }}
         role="img"
         aria-label="Brent Group SFF roadmap: Technical countermeasures, Messages to the Future, and Liaison & ecosystem workstreams plotted against a Jun 2026 – May 2027 seasonal timeline"
       >
@@ -283,7 +289,7 @@ export default function RoadmapDiagram() {
               stroke="#000000"
               strokeWidth={1}
             />
-            <text x={item.textX} y={HEADER_CENTER_Y + 5} fontSize={14} className="font-space fill-black">
+            <text x={item.textRight} y={HEADER_CENTER_Y + 5} textAnchor="end" fontSize={14} className="font-space fill-black">
               {item.label}
             </text>
           </g>
@@ -325,11 +331,12 @@ export default function RoadmapDiagram() {
           <Edge key={`${from}-${to}`} from={centers.get(from)!} to={centers.get(to)!} />
         ))}
 
-        {/* Timeline — a thin outlined shaft widening into a triangular head,
-            matching the source .drawio's flexArrow shape (its ribbon-like
-            body reads as two parallel lines converging to a point, not a
-            single hairline). */}
-        <path d={timelinePath} fill="#000000" />
+        {/* Timeline — matches the source .drawio's flexArrow: a HOLLOW ribbon
+            (stroked outline, no fill), so the shaft shows as two thin
+            parallel lines with a visible gap between them, converging into
+            an open (unfilled) triangular head. Confirmed against a fresh
+            `drawio -x` render of the .drawio file, not guessed. */}
+        <path d={timelinePath} fill="none" stroke="#000000" strokeWidth={1} strokeLinejoin="round" />
         {SEASONS.map((s) => (
           <text
             key={s.name}
