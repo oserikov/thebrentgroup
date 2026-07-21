@@ -9,10 +9,17 @@ spec.md v3/v6]), plus one v5 page with no Figma frame: Messages to the Future
 (linked from About's pillars sentence and from a hover dropdown on the
 TECHNOLOGY nav item — v6 — but not itself in the top nav). The Technology
 page also embeds a v3 component with no Figma frame: the LLM Repellents demo
-(`<RepellentsDemo>`, not its own route). Ships first at
-`oserikov.github.io/thebrentgroup`; migrates to `thebrentgroup.github.io` later,
-replacing the sibling Jekyll repo at `~/thebrentgroup-site` once approved.
-See `spec.md` for full scope.
+(`<RepellentsDemo>`, not its own route). Plus a v3 Roadmap page (no Figma
+frame; `<RoadmapDiagram>`, native SVG), reachable from the TECHNOLOGY nav
+dropdown and now the TECHNOLOGY nav item's own destination. Live at
+`thebrentgroup.github.io` (this repo, transferred from
+`oserikov/thebrentgroup`); the old Jekyll site that used to own that domain
+now lives at `thebrentgroup-old.github.io` (transferred from
+`~/thebrentgroup-site`'s old `thebrentgroup/thebrentgroup.github.io` repo —
+update that sibling clone's remote if you work in it again). `public/404.html`
+redirects any path this site doesn't recognize to the same path on the old
+site, so existing citations (including the submitted SFF grant application)
+keep resolving. See `spec.md` for full scope.
 
 ## Content
 
