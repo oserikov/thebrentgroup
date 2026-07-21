@@ -33,6 +33,17 @@ export default function TechnologyPage() {
         <section className="max-w-[1280px] mx-auto pb-24 pt-16">
           <RepellentsDemo />
         </section>
+
+        <section className="max-w-[1280px] mx-auto pb-24 flex flex-col gap-6">
+          <h2 className="font-space font-medium text-[24px] text-black">
+            Roadmap
+          </h2>
+          <img
+            src={`${import.meta.env.BASE_URL}roadmap.svg`}
+            alt="Brent Group SFF roadmap: Technical countermeasures, Messages to the Future, and Liaison & ecosystem workstreams plotted against a Jun 2026 - May 2027 seasonal timeline"
+            className="w-full h-auto"
+          />
+        </section>
       </div>
 
       <Footer />

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="26.2.14">
+  <diagram name="Brent Group Roadmap" id="brentGroupRoadmap">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1275" pageHeight="669" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ===== Seasonal background, full canvas height (y=0), no white margin above or below. -->
+        <!-- Summer and Fall are "long" (well-known, more data): ramp-in -> one-circle-wide (40px) -->
+        <!-- flat plateau at the peak -> ramp-out. Winter and Spring are "short" (we know less that -->
+        <!-- far out): narrower overall (200 vs 270), simple two-ramp peak, no plateau. Canvas right -->
+        <!-- edge = end of Spring. Boundaries: Jun1'26 (start), Sep1, Dec1, Mar1'27. Peaks: Jul15, Oct15, Jan15, Apr15. -->
+        <mxCell id="BG-summer-a" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#FFF2CC;gradientColor=#FFFFFF;gradientDirection=west;" parent="1" vertex="1">
+          <mxGeometry x="100" y="0" width="144" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-summer-peak" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#FFF2CC;" parent="1" vertex="1">
+          <mxGeometry x="244" y="0" width="50" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-summer-b" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#FFF2CC;gradientColor=#FFFFFF;gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="294" y="0" width="144" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-fall-a" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#EDD4C4;gradientColor=#FFFFFF;gradientDirection=west;" parent="1" vertex="1">
+          <mxGeometry x="438" y="0" width="144" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-fall-peak" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#EDD4C4;" parent="1" vertex="1">
+          <mxGeometry x="581" y="0" width="50" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-fall-b" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#EDD4C4;gradientColor=#FFFFFF;gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="631" y="0" width="144" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-winter-a" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#DAE8FC;gradientColor=#FFFFFF;gradientDirection=west;" parent="1" vertex="1">
+          <mxGeometry x="775" y="0" width="125" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-winter-b" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#DAE8FC;gradientColor=#FFFFFF;gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="900" y="0" width="125" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-spring-a" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#D5E8D4;gradientColor=#FFFFFF;gradientDirection=west;" parent="1" vertex="1">
+          <mxGeometry x="1025" y="0" width="125" height="669" as="geometry" />
+        </mxCell>
+        <mxCell id="BG-spring-b" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fillColor=#D5E8D4;gradientColor=#FFFFFF;gradientDirection=east;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="0" width="125" height="669" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Title ===== -->
+        <mxCell id="Title" value="&lt;font face=&quot;Iosevka Charon, Menlo, Monaco, monospace&quot;&gt;&lt;b&gt;Brent Group SFF Roadmap&lt;/b&gt;&lt;br&gt;Technical AI Countermeasures &amp;amp; AI Influencers &amp;middot; Jun 2026 - May 2027&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;" parent="1" vertex="1">
+          <mxGeometry x="0" y="0" width="775" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Legend: milestone state ===== -->
+        <mxCell id="Leg-blank" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="825" y="5" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="Leg-blank-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;not started&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="855" y="2" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Leg-grad" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;gradientColor=#FFFFFF;gradientDirection=east;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="975" y="5" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="Leg-grad-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;in progress&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="1005" y="2" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Leg-done" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillStyle=solid;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="1125" y="5" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="Leg-done-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;done&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="1155" y="2" width="75" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Lane bands. 150px per Aim, 30px gap between aims (per reference file spacing). ===== -->
+        <mxCell id="Band-Aim1" value="" style="rounded=0;whiteSpace=wrap;html=1;absoluteArcSize=0;arcSize=12;glass=1;connectable=0;allowArrows=0;strokeColor=none;fillColor=default;fontColor=#333333;fillStyle=auto;opacity=50;" parent="1" vertex="1">
+          <mxGeometry x="0" y="50" width="1275" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="Band-Messages" value="" style="rounded=0;whiteSpace=wrap;html=1;absoluteArcSize=0;arcSize=12;glass=1;connectable=0;allowArrows=0;strokeColor=none;fillColor=default;fontColor=#333333;fillStyle=auto;opacity=50;" parent="1" vertex="1">
+          <mxGeometry x="0" y="188" width="1275" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="Band-Aim4" value="" style="rounded=0;whiteSpace=wrap;html=1;absoluteArcSize=0;arcSize=12;glass=1;connectable=0;allowArrows=0;strokeColor=none;fillColor=default;fontColor=#333333;fillStyle=auto;opacity=50;" parent="1" vertex="1">
+          <mxGeometry x="0" y="475" width="1275" height="125" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Lane labels, bottom-right of each band ===== -->
+        <mxCell id="Label-Aim1" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Technical countermeasures&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="975" y="132" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Label-Messages" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Messages to the Future&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="925" y="438" width="350" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="Label-Aim4" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Liaison &amp;amp; ecosystem&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="975" y="558" width="300" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Aim 1 ("Technical countermeasures"): shared y line, straight chain ===== -->
+        <mxCell id="M-repellents" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillStyle=solid;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="0" y="110" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-repellents-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Repellents&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="0" y="60" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-honeypot" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillStyle=solid;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="200" y="110" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-honeypot-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Honeypots&lt;br&gt;(Reworr &amp;amp; Volkov, 2025)&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="200" y="60" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-lpr" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="400" y="110" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-lpr-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;License Plate&lt;br&gt;Reader (LPR)&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="400" y="60" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-tbt" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="600" y="110" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-tbt-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Token-Burning Trap&lt;br&gt;(needs partner)&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="600" y="60" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="E-rep-honeypot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-repellents" target="M-honeypot" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-honeypot-lpr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-honeypot" target="M-lpr" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-lpr-tbt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-lpr" target="M-tbt" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Messages to the Future, row 1: shared y line ===== -->
+        <mxCell id="M-demo" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillStyle=solid;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="0" y="248" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-demo-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Demo&lt;br&gt;(live example)&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="0" y="198" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-preprint-deploy" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;gradientColor=#FFFFFF;gradientDirection=east;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="400" y="248" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-preprint-deploy-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Preprint Servers&lt;br&gt;Deployment (arXiv / bioRxiv)&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="400" y="198" width="200" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-a22" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="800" y="248" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-a22-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Notice design&lt;br&gt;iteration&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="800" y="198" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="E-demo-preprint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-demo" target="M-preprint-deploy" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-preprint-a22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-preprint-deploy" target="M-a22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Messages to the Future, row 2: shared y line ===== -->
+        <mxCell id="M-a31" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="200" y="372" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-a31-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Perplexity&lt;br&gt;ingestion checks&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="200" y="322" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-a32base" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="600" y="372" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-a32base-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Memory-probe&lt;br&gt;baseline&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="600" y="322" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-a32repeat" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="950" y="372" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-a32repeat-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Repeat probes&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="950" y="322" width="138" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-a33" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="372" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-a33-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Inference-time&lt;br&gt;behavior tests&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="322" width="138" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="E-a31-base" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-a31" target="M-a32base" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-base-repeat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-a32base" target="M-a32repeat" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-repeat-a33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-a32repeat" target="M-a33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-a22-repeat" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-a22" target="M-a32repeat" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Aim 4 ("Liaison & ecosystem"): shared y line ===== -->
+        <mxCell id="M-outreach1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;gradientColor=#FFFFFF;gradientDirection=east;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="0" y="535" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-outreach1-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Outreach:&lt;br&gt;Whittaker &amp;amp; Ball&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="0" y="485" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-outreach2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;gradientColor=#FFFFFF;gradientDirection=east;fillColor=#ccdccd;" parent="1" vertex="1">
+          <mxGeometry x="200" y="535" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-outreach2-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;Outreach:&lt;br&gt;Moglen &amp;amp; Stallman&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="200" y="485" width="175" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="M-license" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=10;fillColor=#FFFFFF;" parent="1" vertex="1">
+          <mxGeometry x="600" y="535" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="M-license-lbl" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;No-AI-Agent license&lt;br&gt;variants (possible, not promised)&lt;/font&gt;" style="text;align=left;fontFamily=Space Grotesk,Helvetica Neue,Arial,sans-serif;horizontal=1;verticalAlign=top;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="600" y="485" width="225" height="38" as="geometry" />
+        </mxCell>
+
+        <mxCell id="E-out1-out2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-outreach1" target="M-outreach2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="E-out2-license" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="M-outreach2" target="M-license" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Timeline arrow (no "now" marker) + season labels below it, both over the color bands ===== -->
+        <mxCell id="Timeline-arrow" value="" style="endArrow=classic;html=1;rounded=0;shape=flexArrow;strokeWidth=0.75;startWidth=5;width=5;endWidth=5;endSize=2;bendable=0;startSize=0;" parent="1" edge="1">
+          <mxGeometry width="62" height="62" relative="1" as="geometry">
+            <mxPoint x="0" y="619" as="sourcePoint" />
+            <mxPoint x="1275" y="619" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="Season-summer" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Summer &#39;26&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="181" y="634" width="175" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="Season-fall" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Fall &#39;26&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="519" y="634" width="175" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="Season-winter" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Winter &#39;26/&#39;27&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="800" y="634" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="Season-spring" value="&lt;font face=&quot;Space Grotesk, Helvetica Neue, Arial, sans-serif&quot;&gt;&lt;b&gt;Spring &#39;27&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="1062" y="634" width="175" height="35" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
