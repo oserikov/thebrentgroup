@@ -70,12 +70,24 @@ export default function AboutPage() {
               {ABOUT.documentHubLabel}
             </button>
           </div>
-          <div
-            className="md-content font-space font-light text-[16px] leading-[24px] text-black max-w-[800px]"
-            dangerouslySetInnerHTML={{
-              __html: activeTab === "publications" ? ABOUT.publicationsHtml : ABOUT.documentHubHtml,
-            }}
-          />
+          {/* Both panels stay mounted, stacked in the same grid cell, so the
+              section's height is always the max of the two — switching tabs
+              swaps which one is visible without the shorter panel ever
+              shrinking the container (and the footer below it) down. */}
+          <div className="grid">
+            <div
+              className={`md-content font-space font-light text-[16px] leading-[24px] text-black max-w-[800px] col-start-1 row-start-1 ${
+                activeTab === "publications" ? "" : "invisible"
+              }`}
+              dangerouslySetInnerHTML={{ __html: ABOUT.publicationsHtml }}
+            />
+            <div
+              className={`md-content font-space font-light text-[16px] leading-[24px] text-black max-w-[800px] col-start-1 row-start-1 ${
+                activeTab === "document-hub" ? "" : "invisible"
+              }`}
+              dangerouslySetInnerHTML={{ __html: ABOUT.documentHubHtml }}
+            />
+          </div>
         </section>
       </div>
 
