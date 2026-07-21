@@ -13,6 +13,7 @@ export default defineConfig({
         technology: resolve(__dirname, "technology.html"),
         credibility: resolve(__dirname, "credibility.html"),
         messagesToFuture: resolve(__dirname, "messages-to-the-future.html"),
+        roadmap: resolve(__dirname, "roadmap.html"),
       },
     },
   },
