@@ -23,7 +23,7 @@ export default function Footer() {
         </a>
         <p className="font-space font-normal">&#8203;</p>
         <a
-          href="https://thebrentgroup.github.io"
+          href="https://thebrentgroup-old.github.io"
           target="_blank"
           rel="noreferrer"
           className="font-space text-[14px] leading-[18px] font-normal normal-case [font-variant-caps:all-small-caps] tracking-[0.06em] underline"

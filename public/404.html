@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting — The Brent Group</title>
+  </head>
+  <body>
+    <p>
+      This page moved. If you are not redirected, visit
+      <a id="dest">the old site</a>.
+    </p>
+    <script>
+      // Any path this site doesn't recognize is presumed to be a page from
+      // the old Jekyll site (now at thebrentgroup-old.github.io) — this
+      // covers every current and future stale link (including citations in
+      // the already-submitted grant application) without needing a
+      // maintained list of legacy paths. Deliberately one-directional: the
+      // old site must never redirect back here, or a link missing from both
+      // sites would bounce forever.
+      var dest = "https://thebrentgroup-old.github.io" + location.pathname + location.search + location.hash;
+      document.getElementById("dest").href = dest;
+      location.replace(dest);
+    </script>
+  </body>
+</html>

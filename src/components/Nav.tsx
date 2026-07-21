@@ -3,13 +3,13 @@ import { SITE } from "../content.generated";
 export type Page = "about" | "technology" | "messages-to-future" | "credibility" | "roadmap";
 
 const TECHNOLOGY_LINKS: { page: Page; label: string; href: string }[] = [
-  { page: "technology", label: "LLM Repellents", href: "/thebrentgroup/technology.html" },
+  { page: "technology", label: "LLM Repellents", href: "/technology.html" },
   {
     page: "messages-to-future",
     label: "Messages to the Future",
-    href: "/thebrentgroup/messages-to-the-future.html",
+    href: "/messages-to-the-future.html",
   },
-  { page: "roadmap", label: "Roadmap", href: "/thebrentgroup/roadmap.html" },
+  { page: "roadmap", label: "Roadmap", href: "/roadmap.html" },
 ];
 
 function TechnologyLink({ link, current }: { link: (typeof TECHNOLOGY_LINKS)[number]; current?: Page }) {
@@ -30,7 +30,7 @@ export default function Nav({ current }: { current?: Page }) {
       {current === "about" ? (
         <p>{SITE.name}</p>
       ) : (
-        <a href="/thebrentgroup/" className="cursor-pointer">
+        <a href="/" className="cursor-pointer">
           {SITE.name}
         </a>
       )}
@@ -38,7 +38,7 @@ export default function Nav({ current }: { current?: Page }) {
         {current === "about" ? (
           <p>about</p>
         ) : (
-          <a href="/thebrentgroup/" className="cursor-pointer">
+          <a href="/" className="cursor-pointer">
             about
           </a>
         )}
@@ -47,7 +47,7 @@ export default function Nav({ current }: { current?: Page }) {
           {technologyActive ? (
             <p className="cursor-default">TECHNOLOGY</p>
           ) : (
-            <a href="/thebrentgroup/roadmap.html" className="cursor-pointer">
+            <a href="/roadmap.html" className="cursor-pointer">
               TECHNOLOGY
             </a>
           )}
@@ -73,7 +73,7 @@ export default function Nav({ current }: { current?: Page }) {
         {current === "credibility" ? (
           <p>Credibility</p>
         ) : (
-          <a href="/thebrentgroup/credibility.html" className="cursor-pointer">
+          <a href="/credibility.html" className="cursor-pointer">
             Credibility
           </a>
         )}

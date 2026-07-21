@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { resolve } from "node:path";
 
 export default defineConfig({
-  base: "/thebrentgroup/",
+  base: "/",
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {
