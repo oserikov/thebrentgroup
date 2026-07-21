@@ -73,6 +73,11 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
     }
 
     fit();
+    // Belt-and-suspenders re-checks: mobile text can reflow (web font swap,
+    // Android's own text-size-adjust) in ways that don't cleanly surface as
+    // a single ResizeObserver tick, so re-run fit shortly after mount too.
+    const t1 = setTimeout(fit, 300);
+    const t2 = setTimeout(fit, 1200);
     // Window resize alone misses phones: the viewport doesn't change size,
     // but the surrounding text can still reflow after a web font finishes
     // swapping in (fallback font -> Space Grotesk), which changes how tall
@@ -83,6 +88,8 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
     ro.observe(below);
     window.addEventListener("resize", fit);
     return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
       ro.disconnect();
       window.removeEventListener("resize", fit);
     };
@@ -94,7 +101,7 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
   return (
     <div
       ref={stampRef}
-      className="absolute left-1/2 bottom-0 z-10 w-fit flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-black/30 px-8 py-6 shadow-sm"
+      className="absolute left-1/2 bottom-0 z-10 w-fit flex flex-col items-center gap-1 lg:gap-2 rounded-2xl border-2 border-dashed border-black/30 px-4 py-3 lg:px-8 lg:py-6 shadow-sm"
       style={{
         backgroundColor: "#fff9f5",
         transform: `translate(${tx}, ${ty}) rotate(-20deg) scale(${scale})`,
@@ -113,10 +120,10 @@ export default function FundingStamp({ aboveRef, belowRef }: Props) {
         alt="Three gold coins"
         width={32}
         height={32}
-        className="w-12 h-12"
+        className="w-8 h-8 lg:w-12 lg:h-12"
         style={{ imageRendering: "pixelated" }}
       />
-      <p className="font-space font-normal text-[16px] text-black text-center">
+      <p className="font-space font-normal text-[13px] lg:text-[16px] text-black text-center">
         Right now we work for free,
         <br />
         consider funding us (email us){" "}
