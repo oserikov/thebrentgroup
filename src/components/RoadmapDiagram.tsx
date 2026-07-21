@@ -42,7 +42,7 @@ const FILL: Record<MilestoneState, string> = {
 
 const LANES: Lane[] = [
   {
-    label: "Technical countermeasures",
+    label: "Technical Countermeasures",
     labelX: VIEW_W,
     labelY: 152,
     bandY: 50,
@@ -54,8 +54,8 @@ const LANES: Lane[] = [
         milestones: [
           { id: "honeypot", x: 0, lines: ["Honeypots", "(Reworr & Volkov, 2025)"], state: "done" },
           { id: "repellents", x: 200, lines: ["Repellents"], state: "done" },
-          { id: "lpr", x: 400, lines: ["License plate", "reader (LPR)"], state: "not-started" },
-          { id: "tbt", x: 600, lines: ["Token-burning trap", "(needs partner)"], state: "not-started" },
+          { id: "lpr", x: 400, lines: ["License Plate", "Reader (LPR)"], state: "not-started" },
+          { id: "tbt", x: 600, lines: ["Token-Burning Trap", "(Needs Partner)"], state: "not-started" },
         ],
       },
     ],
@@ -71,25 +71,25 @@ const LANES: Lane[] = [
         circleY: 273,
         captionTop: 198,
         milestones: [
-          { id: "demo", x: 0, lines: ["Demo", "(live example)"], state: "done" },
-          { id: "preprint-deploy", x: 400, lines: ["Preprint servers", "deployment (arXiv / bioRxiv)"], state: "in-progress" },
-          { id: "notice-design", x: 800, lines: ["Notice design", "iteration"], state: "not-started" },
+          { id: "demo", x: 0, lines: ["Demo", "(Live Example)"], state: "done" },
+          { id: "preprint-deploy", x: 400, lines: ["Preprint Servers", "Deployment (arXiv / bioRxiv)"], state: "in-progress" },
+          { id: "notice-design", x: 800, lines: ["Notice Design", "Iteration"], state: "not-started" },
         ],
       },
       {
         circleY: 397,
         captionTop: 322,
         milestones: [
-          { id: "perplexity", x: 200, lines: ["Perplexity", "ingestion checks"], state: "not-started" },
-          { id: "memory-baseline", x: 600, lines: ["Memory-probe", "baseline"], state: "not-started" },
-          { id: "repeat-probes", x: 950, lines: ["Repeat probes"], state: "not-started" },
-          { id: "inference-tests", x: 1100, lines: ["Inference-time", "behavior tests"], state: "not-started" },
+          { id: "perplexity", x: 200, lines: ["Perplexity", "Ingestion Checks"], state: "not-started" },
+          { id: "memory-baseline", x: 600, lines: ["Memory-Probe", "Baseline"], state: "not-started" },
+          { id: "repeat-probes", x: 950, lines: ["Repeat Probes"], state: "not-started" },
+          { id: "inference-tests", x: 1100, lines: ["Inference-Time", "Behavior Tests"], state: "not-started" },
         ],
       },
     ],
   },
   {
-    label: "Liaison & ecosystem",
+    label: "Liaison & Ecosystem",
     labelX: VIEW_W,
     labelY: 578,
     bandY: 475,
@@ -101,7 +101,7 @@ const LANES: Lane[] = [
         milestones: [
           { id: "outreach-1", x: 0, lines: ["Outreach:", "Whittaker & Ball"], state: "in-progress" },
           { id: "outreach-2", x: 200, lines: ["Outreach:", "Moglen & Stallman"], state: "in-progress" },
-          { id: "license", x: 600, lines: ["No-AI-Agent license", "variants (possible, not promised)"], state: "not-started" },
+          { id: "license", x: 600, lines: ["No-AI-Agent License", "Variants (Possible, Not Promised)"], state: "not-started" },
         ],
       },
     ],
@@ -164,8 +164,8 @@ const LEGEND_R = 12.5;
 const LEGEND_CIRCLE_TEXT_GAP = 8;
 const LEGEND_ITEM_GAP = 20;
 const LEGEND: { state: MilestoneState; label: string; boxWidth: number }[] = [
-  { state: "not-started", label: "Not started", boxWidth: 95 },
-  { state: "in-progress", label: "In progress", boxWidth: 95 },
+  { state: "not-started", label: "Not Started", boxWidth: 95 },
+  { state: "in-progress", label: "In Progress", boxWidth: 95 },
   { state: "done", label: "Done", boxWidth: 55 },
 ];
 

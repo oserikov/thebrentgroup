@@ -47,7 +47,7 @@ export default function Nav({ current }: { current?: Page }) {
           {technologyActive ? (
             <p className="cursor-default">TECHNOLOGY</p>
           ) : (
-            <a href="/thebrentgroup/technology.html" className="cursor-pointer">
+            <a href="/thebrentgroup/roadmap.html" className="cursor-pointer">
               TECHNOLOGY
             </a>
           )}
