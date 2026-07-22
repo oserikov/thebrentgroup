@@ -3,11 +3,9 @@ hero_title:
   - "Unconventional"
   - "AI × Bio Countermeasures"
 pull_quote: >
-    Led by Dr. Roger Brent, 
-    
-    25+ years of biosecurity advice for U.S. government. 
+    Led by Roger Brent.
 
-    We combine deep biological expertise with frontier AI safety research to prevent AI-enabled biological harm.
+    The team draws on biological and AI safety expertise to counter AI-enabled biological harm.
 people_heading: "People"
 publications_heading: "publications"
 document_hub_label: "Document hub"
